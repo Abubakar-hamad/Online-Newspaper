@@ -1,15 +1,24 @@
 import React from 'react'
-import '../pages/Home/home.css'
-import logo from "../assets/img/log.png";
+import { NavLink, useNavigate } from 'react-router-dom';
+import logo from "../assets/img/iconah.png";
+
 const Header = () => {
+  const navigate = useNavigate()
   return (
     <div className="container">
 
     <div className="header">
-        <div className="logo">
+        <div onClick={()=> navigate('/')} className="logo">
         <div className="bgShape"></div>
-        <img src={logo} alt="Logo" />
+        <img  src={logo} alt="Logo" />
     </div>
+    <nav>
+        <NavLink className='link' to={'/'}>الرئيسية</NavLink>
+        <NavLink className='link' to={'/all'}>الأخبار</NavLink>
+        <NavLink className='link' to={'/a'}>سياسية</NavLink>
+        <NavLink className='link' to={'/a'}>اقتصادية</NavLink>
+        <NavLink className='link' to={'/a'}>منوعات</NavLink>
+    </nav>
     <div className="account">
         <h3>login</h3>
     </div>   

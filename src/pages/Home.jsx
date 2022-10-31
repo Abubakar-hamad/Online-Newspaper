@@ -1,23 +1,19 @@
 import React from 'react'
-import Writer from '../../components/Writer/Writer'
-
-
-import homeImg from "../../assets/img/home.jpg"
-
-import Letest from '../../components/Letest';
-import MostRead from '../../components/MostRead';
-import Important from '../../components/important';
-
-import Header from '../../components/Header'
-import Economic from '../../components/Economic'
-import Tech from '../../components/Tech'
+import Writer from '../components/Writer/Writer'
+import homeImg from "../assets/img/home.jpg"
+import Letest from '../components/Letest';
+import MostRead from '../components/MostRead';
+import Important from '../components/important';
+import Economic from '../components/Economic'
+import Tech from '../components/Tech'
+import Notifications from '../components/Notifications';
 
 
 
 const Home = () => {
   return (
         <>
-            <Header/>
+
             
             <section id='home'>
     
@@ -25,9 +21,9 @@ const Home = () => {
             <div className="container">
                 <div  className="content">
                     <div 
-                    data-aos="fade-left" 
-                    data-aos-offset="300"
-                    data-aos-easing="ease-in-sine"
+                    // data-aos="fade-left" 
+                    // data-aos-offset="300"
+                    // data-aos-easing="ease-in-sine"
                     className="left">
                         <p className='we'  >نحن هنا</p>
                         <br />
@@ -36,8 +32,8 @@ const Home = () => {
                     <div
                     data-aos="zoom-in" 
                     data-aos-offset="300"
-                    data-aos-easing="ease-in-sine"
-                    data-aos-duration="1000"
+                    data-aos-easing="fade-in-left"
+                    data-aos-duration="3000"
                     className="right">
                         <img src={homeImg} alt="" />
                     </div>
@@ -54,8 +50,8 @@ const Home = () => {
 
                     <div className="homeNews">
                         <Important/>
-                        <Letest/>
-                        <MostRead />
+                        <Letest nonScroll={'unScroling'} mostR={"آخر الأخبار"}/>
+                        <MostRead mostR={"الأكثر قراءة"}/>
                     </div>
                 </div>
             </section>
@@ -65,7 +61,9 @@ const Home = () => {
                 <Economic/>
             </section>
 
-
+            <section>
+                <Notifications/>
+            </section>
             <section>
                 <Tech/>
             </section>

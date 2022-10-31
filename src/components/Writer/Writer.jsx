@@ -4,7 +4,7 @@ import { useTypewriter , Cursor } from "react-simple-typewriter";
 
 const Writer = ()=>{
     const [text] = useTypewriter({
-        words:["لتحديثك بكل جديد" , "على مدار الساعه" , "لإعلامك بالحقيقة " , "نحارب الإشـاعة"],
+        words:["لتحديثك بكل جديد" , "على مدار الساعة" , "لإعلامك بالحقيقة " , "لا مجال للإشـاعة"],
         loop:0 ,
         typeSpeed:120 ,
         deleteSpeed:50,
