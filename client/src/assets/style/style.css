@@ -750,7 +750,7 @@ footer{
     height: 50px;
     display: flex;
     align-items: center;
-    padding: 1rem;
+    padding: 0 1rem;
     direction: ltr;
     text-transform: capitalize;
     display: flex;
