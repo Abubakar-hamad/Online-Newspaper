@@ -9,6 +9,7 @@ import Details from './pages/Details';
 import News from './pages/News';
 import Footer from './components/Footer';
 import Header from './components/Header';
+import File from './components/File';
 AOS.init();
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
           <Route path='/tech' element={<News />} />
           <Route path='/a' element={<Details />} />
           <Route path='/all' element={<News />} />
+          <Route path='/file' element={<File />} />
         </Routes>
         <Footer/>
       </Router>
