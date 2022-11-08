@@ -3,7 +3,7 @@ import express from 'express'
 const route = express.Router()
 
 // import functions
-import { countNews, createNews, deleteNews, filterNews, getDetails, getNews, updateNews } from '../controllers/newsControllers.js'
+import { countNews, createNews, deleteNews, filterNews, getDetails, getNews, search, updateNews } from '../controllers/newsControllers.js'
 import multerConfig from '../utils/multer.js'
 
 
@@ -16,6 +16,7 @@ route.put('/:id' , updateNews )
 route.delete('/:id' , deleteNews )
 route.get('/filter' , filterNews)
 route.get('/count' , countNews)
+route.get('/search' , search)
 
 
 export default route

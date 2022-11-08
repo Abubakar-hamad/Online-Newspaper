@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Writer from '../components/Writer/Writer'
 import homeImg from "../assets/img/home.jpg"
 import Letest from '../components/Letest';
@@ -7,11 +7,20 @@ import Important from '../components/important';
 import Economic from '../components/Economic'
 import Tech from '../components/Tech'
 import Notifications from '../components/Notifications';
+import useFetch from '../hooks/useFetch';
+import { useState } from 'react';
 
 
 
-const Home = () => {
-  return (
+const Home = ({setAllNews}) => {
+    const {data , loading , error} = useFetch('news')
+
+    const [news ,  setNews] = useState('')
+    useEffect(()=>{
+        setNews(data)
+        setAllNews(data)
+    },[data])
+    return (
         <>
 
             
@@ -49,23 +58,24 @@ const Home = () => {
                     <h3  className='headtitle'>الأخبار</h3>
 
                     <div className="homeNews">
-                        <Important/>
-                        <Letest nonScroll={'unScroling'} mostR={"آخر الأخبار"}/>
-                        <MostRead mostR={"الأكثر قراءة"}/>
+                        <Important news={[...news].reverse().splice(0,4)} />
+                        <Letest news={[...news].reverse().splice(0,4)} nonScroll={'unScroling'} mostR={"آخر الأخبار"}/>
+                        <MostRead news={news} mostR={"الأكثر قراءة"}/>
                     </div>
                 </div>
             </section>
 
 
             <section>
-                <Economic/>
+                
+                <Economic news={news}/>
             </section>
 
             <section>
-                <Notifications/>
+                <Notifications news={news}/>
             </section>
             <section>
-                <Tech/>
+                <Tech news={news}/>
             </section>
 
            

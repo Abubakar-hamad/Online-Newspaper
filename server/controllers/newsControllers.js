@@ -56,7 +56,7 @@ export const getDetails = asyncHandler(async(req  , res)=>{
     if(!news){
         res.status(404).json('news not found or maybe deleted')
     }
-    res.status(200).json({news})
+    res.status(200).json(news)
 })
 
 
@@ -92,7 +92,7 @@ export const filterNews =asyncHandler(async(req , res)=>{
     if(!news){
         res.status(404).json('No News With This Categoory')
     }
-    res.status(200).json({category:news})
+    res.status(200).json(news)
 })
 
 
@@ -108,4 +108,16 @@ export const countNews = asyncHandler(async(req , res)=>{
         {category:'local' , count:local}
     ])
     
+})
+
+
+// 8- search function : >>
+
+export const  search = asyncHandler(async(req  , res)=>{
+    const {input} = req.body
+    const query = {$text : {$search:input}}
+    const cursor = await NewsModel.find(query).toArray(function(err, result) {
+        if (err) throw err;
+        console.log(result);
+      }) 
 })

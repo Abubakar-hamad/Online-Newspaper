@@ -1,6 +1,8 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
-const Letest = ({mostR , nonScroll}) => {
+const Letest = ({mostR , nonScroll  , news}) => {
+  const navigate = useNavigate()
   return (
     <div className={nonScroll ? '' : 'split'}>
       <h2>{mostR}</h2>
@@ -10,47 +12,25 @@ const Letest = ({mostR , nonScroll}) => {
     data-aos="zoom-in-up"
     div className="letest">
       
-        <div data-aos="fade-up" data-aos-duration="3000" className="item">
-          <div className="detail">
-            <p>سياسية</p>
-            <span>April 18 ,2022</span>
+          {news && 
+      
+          [...news].reverse().map(item => (
+
+          <div data-aos="fade-up" data-aos-duration="3000" onClick={()=>navigate(`/news/${item._id}`)} key={item._id} className="item">
+            <div className="detail">
+            <p>{item.category}</p>
+            <span>{`${item.updatedAt.slice(0 , 10)} | ${item.updatedAt.slice(11, 16)}`}</span>
+            </div>
+            <h2 className='title' >{item.title}</h2>
+            <p className='itemcontent'>{item.text.slice(0 ,100)}</p>
+            <a href="#">أكمل القراءة</a>
+            
           </div>
-          <h2 className='title' >Lorem ipsum, dolor sit amet consectetur adipisicing elit. Possimus, asperiores?</h2>
-          <p className='itemcontent'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis, nostrum unde ipsum sit corporis neque tempora quidem exercitationem praesentium omnis distinctio, iste delectus eaque iure minima, expedita minus magni culpa!</p>
-          <a href="#">أكمل القراءة</a>
+          ))
 
-        </div>
-
-        <div data-aos="fade-up" data-aos-duration="2000" className="item">
-          <div className="detail">
-            <p>سياسية</p>
-            <span>April 18 ,2022</span>
-          </div>
-          <h2 className='title' >Lorem ipsum, dolor sit amet consectetur adipisicing elit. Possimus, asperiores?</h2>
-          <p className='itemcontent'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad a repellendus perferendis quae aut molestias voluptate ipsam ex repudiandae velit quam, architecto officiis? Harum, beatae. Rem temporibus voluptatum tempora porro!</p>
-          <a href="#">أكمل القراءة</a>
-        </div>
-
-
-        <div data-aos="fade-up" data-aos-duration="1000" className="item">
-          <div className="detail">
-            <p>سياسية</p>
-            <span>April 18 ,2022</span>
-          </div>
-          <h2 className='title' >Lorem ipsum, dolor sit amet consectetur adipisicing elit. Possimus, asperiores?</h2>
-          <p className='itemcontent'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis, nostrum unde ipsum sit corporis neque tempora quidem exercitationem praesentium omnis distinctio, iste delectus eaque iure minima, expedita minus magni culpa!</p>
-          <a href="#">أكمل القراءة</a>
-        </div>
-
-        <div data-aos="fade-up" data-aos-duration="1000" className="item">
-          <div className="detail">
-            <p>سياسية</p>
-            <span>April 18 ,2022</span>
-          </div>
-          <h2 className='title' >Lorem ipsum, dolor sit amet consectetur adipisicing elit. Possimus, asperiores?</h2>
-          <p className='itemcontent'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis, nostrum unde ipsum sit corporis neque tempora quidem exercitationem praesentium omnis distinctio, iste delectus eaque iure minima, expedita minus magni culpa!</p>
-          <a href="#">أكمل القراءة</a>
-        </div>
+      
+          }
+       
     
     </div>
     </div>

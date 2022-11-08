@@ -14,7 +14,7 @@ const Header = () => {
     </div>
     <nav>
         <NavLink className='link' to={'/'}>الرئيسية</NavLink>
-        <NavLink className='link' to={'/all'}>الأخبار</NavLink>
+        <NavLink className='link' to={'/allnews'}>الأخبار</NavLink>
         <NavLink className='link' to={'/a'}>سياسية</NavLink>
         <NavLink className='link' to={'/a'}>اقتصادية</NavLink>
         <NavLink className='link' to={'/a'}>منوعات</NavLink>

@@ -1,10 +1,26 @@
 import React from 'react'
-import slide1 from '../assets/img/slide1.jpg'
-import slide2 from '../assets/img/slide2.jpg'
-import slide3 from '../assets/img/slide3.jpg'
-import slide4 from '../assets/img/slide4.jpg'
-const Important = () => {
-  
+import { useEffect } from 'react'
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+
+
+
+const Important = ({news}) => {
+
+  const [primary  ,setPrimary] = useState('')
+  useEffect(()=>{
+    setPrimary(news[0])
+  },[news])
+  let idOfPrimmary = primary?._id
+  let secondery = news.filter(items => items._id !== idOfPrimmary) ;
+  const handleClick = (id)=>{
+    
+    const item = news.find(item => item._id === id)
+    setPrimary(item)
+    
+  }
+  const navigate = useNavigate()
+
   return (
  
     
@@ -14,37 +30,40 @@ const Important = () => {
             data-aos="fade-left" 
             data-aos-offset="300"
             data-aos-easing="ease-in-sine">
-            <div className="primary">
-              <div className="img">
-                <img src={slide1} alt="img" />
-              </div>
-              <span>april 17 , 2022</span>
-              <h2>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia, tempore?
-              </h2>
-              <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque officia dolore quam, quo ratione quidem, nulla, aliquid beatae iusto quos ipsa laboriosam. Magnam ex quibusdam adipisci non reprehenderit. Deleniti rerum recusandae quas velit reprehenderit id dolore laudantium architecto blanditiis pariatur ducimus dignissimos, nobis atque, est eligendi tempora impedit ut temporibus.</p>
-            </div>
-            <div className="secondery">
-              <div  
-              data-aos="flip-left"
-              data-aos-duration='3000'
-               className="img">
-                <img  src={slide2} alt="img1" />
-              </div>
+              {primary && 
+              <>
+                
+                    <div  onClick={()=>navigate(`/news/${primary._id}`)}  key={primary._id} className="primary">
+                      <div className="img">
+                        <img src={primary.img} alt="img" />
+                      </div>
+                      <span>{`${primary.updatedAt.slice(0 , 10)} | ${primary.updatedAt.slice(11, 16)}`}</span>
+                      <h2> {primary.title} </h2>
+                      <p>{primary.text.slice(0 , 100)} ...</p>
+                      <a href=''>عرض</a>
+                    </div>
+              
+              </>
+              }
 
-              <div  data-aos="zoom-in"
+           
+
+  
+            <div className="secondery">
+            {secondery &&
+              
+              secondery.map(item =>(
+
+              <div onClick={()=>handleClick(item._id)} key={item._id} data-aos="zoom-in"
               data-aos-duration='2000'
               className="img">
-                <img src={slide3} alt="img2" />
+                <img src={item.img} alt="img2" />
               </div>
+              ))
 
-              <div  data-aos="flip-right"
-              data-aos-duration='3000'
-               className="img">
-                <img src={slide4} alt="img3" />
-              </div>
+
+            } 
             </div>
-
         </div>
     </div>
   

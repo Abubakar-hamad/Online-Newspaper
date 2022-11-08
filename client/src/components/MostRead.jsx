@@ -1,10 +1,11 @@
 import React from 'react'
-import slide1 from '../assets/img/slide1.jpg'
-import slide2 from '../assets/img/slide2.jpg'
-import slide3 from '../assets/img/slide3.jpg'
-import slide4 from '../assets/img/slide4.jpg'
-const MostRead = ({mostR , nonScroll}) => {
-    console.log(nonScroll);
+import { useNavigate } from 'react-router-dom'
+
+
+const MostRead = ({mostR , nonScroll , news}) => {
+    const navigate = useNavigate()
+
+
   return (
 
     <div className={nonScroll ? '' : 'split'}>
@@ -13,91 +14,30 @@ const MostRead = ({mostR , nonScroll}) => {
         data-aos-easing="ease-in-sine"
         data-aos="fade-right" 
         className="mostRead">
-                <div data-aos="fade-right" data-aos-duration="3000" className="item">
+                
+        {news &&
+            [...news].reverse().map(item =>(
+                <div onClick={()=>navigate(`/news/${item._id}`)}  key={item._id} className="item">
                     <div className="mReadContent">
                         <div className="detail">
-                            <p>tecnical</p>
-                            <span>18 April , 2022</span>
+                            <p>{item.category}</p>
+                            <span>{`${item.updatedAt.slice(0 , 10)} | ${item.updatedAt.slice(11, 16)}`}</span>
                         </div>
                         <div className="mReadTitle">
-                            <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat, ut?</h2>
+                            <h2>{item.title}</h2>
                         </div>
-                        <a href="#">أكمل القراءة</a>
+                        
                     </div>
 
                     <div className="mReadImg">
-                        <img src={slide4} alt="img" />
+                        <img src={item.img} alt="img" />
                     </div>
                 </div>
 
-                <div  className="item">
-                    <div className="mReadContent">
-                        <div className="detail">
-                            <p>tecnical</p>
-                            <span>18 April , 2022</span>
-                        </div>
-                        <div className="mReadTitle">
-                            <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat, ut?</h2>
-                        </div>
-                        <a href="#">أكمل القراءة</a>
-                    </div>
-
-                    <div className="mReadImg">
-                        <img src={slide2} alt="img" />
-                    </div>
-                </div>
-
-                <div  className="item">
-                    <div className="mReadContent">
-                        <div className="detail">
-                            <p>tecnical</p>
-                            <span>18 April , 2022</span>
-                        </div>
-                        <div className="mReadTitle">
-                            <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat, ut?</h2>
-                        </div>
-                        <a href="#">أكمل القراءة</a>
-                    </div>
-
-                    <div className="mReadImg">
-                        <img src={slide3} alt="img" />
-                    </div>
-                </div>
-
-
-                <div  className="item">
-                    <div className="mReadContent">
-                        <div className="detail">
-                            <p>tecnical</p>
-                            <span>18 April , 2022</span>
-                        </div>
-                        <div className="mReadTitle">
-                            <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat, ut?</h2>
-                        </div>
-                        <a href="#">أكمل القراءة</a>
-                    </div>
-
-                    <div className="mReadImg">
-                        <img src={slide1} alt="img" />
-                    </div>
-                </div>
-
-                <div  className="item">
-                    <div className="mReadContent">
-                        <div className="detail">
-                            <p>tecnical</p>
-                            <span>18 April , 2022</span>
-                        </div>
-                        <div className="mReadTitle">
-                            <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat, ut?</h2>
-                        </div>
-                        <a href="#">أكمل القراءة</a>
-                    </div>
-
-                    <div className="mReadImg">
-                        <img src={slide1} alt="img" />
-                    </div>
-                </div>
+            ))
+        }
+                
+            
 
              
         </div>

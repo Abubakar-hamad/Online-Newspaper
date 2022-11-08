@@ -5,18 +5,16 @@ import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 import "swiper/css/navigation"
 import { A11y, EffectCoverflow, Navigation, Pagination   } from "swiper";
+import { useNavigate } from "react-router-dom";
 
 
-
-import slide1 from '../assets/img/slide1.jpg'
-import slide2 from '../assets/img/slide2.jpg'
-import slide3 from '../assets/img/slide3.jpg'
-import slide4 from '../assets/img/slide4.jpg'
-
-const Economic = () => {
+const Economic = ({news}) => {
+  const navigate  = useNavigate() ;
+ 
   return (
     <div className='container'>
         <h3  className='headtitle'>الاقتصادية</h3>
+    <div className="ecnom">
 
     <Swiper
      data-aos="fade-up"
@@ -32,74 +30,40 @@ const Economic = () => {
      navigation
      pagination={{ clickable: true }}
 
-     EffectCoverflow={{
+     effectcoverflow={{
        
        stretch: 0,
        depth: 100,
        modifier: 1, 
        slideShadows: true,
      }}
+     
     >
-      <SwiperSlide style={{width:'300px'}}>
-        <div className="swiperCard">
-          <div className="img">
-        <img src={slide1} alt="" />
+      {news ?
+     
+     [...news].reverse().map(item =>(
+          <SwiperSlide  key={item._id} style={{width:'300px'}}>
+          <div onClick={()=>navigate(`/news/${item._id}`)} className="swiperCard">
+            <div className="img">
+              <img src={item.img} alt="" />
+            </div>
+            <div className="detail">
+              <span>{`${item.updatedAt.slice(0 , 10)} | ${item.updatedAt.slice(11, 16)}`}</span>
+              <span>{item.category}</span>
+            </div>
+            <h4>{item.title}</h4>
+            <p>{item.text.slice(0 ,70)} . . .</p>
+            <a href="#">عرض </a>
           </div>
-          <div className="detail">
-            <span>15 April , 2022</span>
-            <span>الاقتصادية</span>
-          </div>
-          <h4>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate, maiores.</h4>
-          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facilis ipsa in adipisci hic, ex id exercitationem. Impedit voluptatibus quae atque.</p>
-          <a href="#">عرض </a>
-        </div>
-      </SwiperSlide>
+        </SwiperSlide>
+        ))
+      :
+       <SwiperSlide>no Items</SwiperSlide>
+       }
 
-      <SwiperSlide style={{width:'300px'}}>
-        <div className="swiperCard">
-          <div className="img">
-        <img src={slide2} alt="" />
-          </div>
-          <div className="detail">
-            <span>15 April , 2022</span>
-            <span>الاقتصادية</span>
-          </div>
-          <h4>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate, maiores.</h4>
-          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facilis ipsa in adipisci hic, ex id exercitationem. Impedit voluptatibus quae atque.</p>
-          <a href="#">عرض </a>
-        </div>
-      </SwiperSlide>
-
-      <SwiperSlide style={{width:'300px'}}>
-        <div className="swiperCard">
-          <div className="img">
-        <img src={slide3} alt="" />
-          </div>
-          <div className="detail">
-            <span>15 April , 2022</span>
-            <span>الاقتصادية</span>
-          </div>
-          <h4>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate, maiores.</h4>
-          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facilis ipsa in adipisci hic, ex id exercitationem. Impedit voluptatibus quae atque.</p>
-          <a href="#">عرض </a>
-        </div>
-      </SwiperSlide>
-
-      <SwiperSlide style={{width:'300px'}}>
-        <div className="swiperCard">
-          <div className="img">
-        <img src={slide4} alt="" />
-          </div>
-          <div className="detail">
-            <span>15 April , 2022</span>
-            <span>الاقتصادية</span>
-          </div>
-          <h4>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate, maiores.</h4>
-          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facilis ipsa in adipisci hic, ex id exercitationem. Impedit voluptatibus quae atque.</p>
-          <a href="#">عرض </a>
-        </div>
-      </SwiperSlide>
+      
       </Swiper>
+      </div>
 
     </div>
   )

@@ -4,7 +4,7 @@ const Notifications = () => {
   return (
     <div className='noti'>
         <div className="notiContent">
-        <h2>  خدمة أخباري اﻹلكترونية إشترك الآن لتصلك أولا بأول</h2>
+        <h2 style={{direction:'rtl'}} >  خدمة أخباري اﻹلكترونية إشترك الآن لتصلك أولا بأول</h2>
             <br />
         <input type="email" placeholder=' Enter  Your  Email . . .' />
         <div className="accept">

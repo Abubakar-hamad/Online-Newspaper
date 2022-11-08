@@ -20,6 +20,8 @@ connectDB()
 import uploadImg from "./utils/cloudinary.js";
 // -------------------//
 import News from './routes/newsRoute.js'
+import Auth from './routes/authRoute.js' ;
+import User from "./routes/userRoute.js";
 import fileModel from "./models/FileModel.js";
 import multerConfig from './utils/multer.js'
 
@@ -32,6 +34,8 @@ app.listen(port , ()=>console.log(`server running in ${port}`))
 app.use( '/Images' , express.static('server/Images'))
 //Apis
 app.use('/api/news' , News)
+app.use('/api/auth' , Auth)
+app.use('/api/user' , User)
 app.get('/api' , (req , res)=>res.send('Server Work Success'))
 
 // app.post('/img', multerConfig, async(req , res)=>{
