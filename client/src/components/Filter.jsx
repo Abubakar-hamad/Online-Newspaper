@@ -11,9 +11,10 @@ import { useEffect } from 'react'
 const Filter = ({setNews}) => {
     const [dataFilterd , setDataFilterd] =useState('')
     const {data , loading  ,error} = useFetch(`news${dataFilterd}`)
-
+   
     useEffect(()=>{
         setNews(data)
+     
     }, [data])
     const [form , setForm] = useState(false)
     return (

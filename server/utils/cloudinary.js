@@ -12,12 +12,12 @@ const cloudinary = cloudinaryModule.v2
       });
 
 
-const uploadImg = async(file)=>{
+const uploadImg = async(file , folder)=>{
     const options = {
       use_filename: true,
       unique_filename: false,
       overwrite: true,
-      folder:'News',
+      folder:folder,
       width:400 ,
       height:400 ,
       crop: "fill"

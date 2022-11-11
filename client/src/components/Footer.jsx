@@ -23,7 +23,7 @@ const Footer = () => {
                     </div>
                 </div>
 
-                <div className="connectUs">
+                <div className="connectUs hid">
                 <h2> تواصل معنا</h2>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae, eius.</p>
                     <button> اتصل بنا</button>

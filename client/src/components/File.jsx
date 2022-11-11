@@ -9,7 +9,6 @@ import axios from 'axios'
 const File = () => {
     const [img , setImg]=  useState('')
     const [viewImg , setViewImg] =  useState('')
-    // const {img} = img
 
     
     const handleSubmit = (e)=>{

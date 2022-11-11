@@ -4,6 +4,7 @@ import cors from 'cors' ;
 import dotenv from "dotenv"
 import asyncHndler from "express-async-handler" ;
 import bodyParser from "body-parser";
+import cookieParser from 'cookie-parser';
 import errroHandler from "./middleware/errorMiddleware.js";
 import fs from 'fs' ;
 // defaine constant
@@ -22,6 +23,7 @@ import uploadImg from "./utils/cloudinary.js";
 import News from './routes/newsRoute.js'
 import Auth from './routes/authRoute.js' ;
 import User from "./routes/userRoute.js";
+import Cmment from "./routes/commentRoute.js"
 import fileModel from "./models/FileModel.js";
 import multerConfig from './utils/multer.js'
 
@@ -30,12 +32,14 @@ import multerConfig from './utils/multer.js'
 app.use(cors())
 app.use(express.json({limit:'50mb'}))
 app.use(express.urlencoded({extended:true , limit:'50mb'}))
+app.use(cookieParser())
 app.listen(port , ()=>console.log(`server running in ${port}`))
 app.use( '/Images' , express.static('server/Images'))
 //Apis
 app.use('/api/news' , News)
 app.use('/api/auth' , Auth)
 app.use('/api/user' , User)
+app.use('/api/comment' , Cmment)
 app.get('/api' , (req , res)=>res.send('Server Work Success'))
 
 // app.post('/img', multerConfig, async(req , res)=>{

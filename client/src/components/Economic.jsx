@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState , useEffect } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import "swiper/css";
 import "swiper/css/effect-coverflow";
@@ -6,11 +6,17 @@ import "swiper/css/pagination";
 import "swiper/css/navigation"
 import { A11y, EffectCoverflow, Navigation, Pagination   } from "swiper";
 import { useNavigate } from "react-router-dom";
+import useFetch from '../hooks/useFetch';
 
 
-const Economic = ({news}) => {
+const Economic = () => {
   const navigate  = useNavigate() ;
- 
+  const {data  , loading , error} = useFetch('news/filter?category=ecnomic')
+  const [news , setNews] = useState('')
+  useEffect(()=>{
+    setNews(data)
+  },[data])
+
   return (
     <div className='container'>
         <h3  className='headtitle'>الاقتصادية</h3>

@@ -26,8 +26,7 @@ export const  getNews = asyncHandler(async(req , res)=>{
 export const createNews = asyncHandler(async(req , res)=>{
     const {title , category , text  } = req.body
     
-    const{img} = req.files
-    console.log('creator . . .' , img);
+    const{img} = req.files[0]
 
 
   if(!title || !category || !text){
@@ -36,7 +35,7 @@ export const createNews = asyncHandler(async(req , res)=>{
     if(!img){
          res.status(400).json('You must select photo to provide the news')
     }
-    const result =  await uploadImg(req.files[0].path )
+    const result =  await uploadImg(req.files[0].path  , 'News')
     const news = new NewsModel({
        img:result ,
         ...req.body 

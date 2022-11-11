@@ -20,6 +20,8 @@ const Home = ({setAllNews}) => {
         setNews(data)
         setAllNews(data)
     },[data])
+
+    
     return (
         <>
 
@@ -58,9 +60,9 @@ const Home = ({setAllNews}) => {
                     <h3  className='headtitle'>الأخبار</h3>
 
                     <div className="homeNews">
-                        <Important news={[...news].reverse().splice(0,4)} />
+                        <Important news={[...news].filter(items=>items.category === 'arabic').reverse().splice(0,4)} />
                         <Letest news={[...news].reverse().splice(0,4)} nonScroll={'unScroling'} mostR={"آخر الأخبار"}/>
-                        <MostRead news={news} mostR={"الأكثر قراءة"}/>
+                        <MostRead news={[...news].slice(4 , 10)} mostR={"الأكثر قراءة"}/>
                     </div>
                 </div>
             </section>
@@ -71,10 +73,10 @@ const Home = ({setAllNews}) => {
                 <Economic news={news}/>
             </section>
 
-            <section>
+            <section className='hid'>
                 <Notifications news={news}/>
             </section>
-            <section>
+            <section className='hid'>
                 <Tech news={news}/>
             </section>
 

@@ -28,7 +28,7 @@ export const register = asyncHandler(async(req ,res)=>{
     const token = jwt.sign(
             { id:user._id,  username:user.username , isStaff:user.isStaff , isAdmin:user.isAdmin  , } , process.env.JWT_SEC
         )
-        res.cookie('access_token' , token  ,{httpOnly:true}).status(201).json({"the user created sucessfully":newUser , token})
+        res.cookie('access_token' , token  ,{httpOnly:true}).status(201).json({"userReg":newUser , token})
 })
 
 // login function
@@ -44,12 +44,12 @@ export const login = asyncHandler(async(req , res)=>{
     }
     const isPassword = await bcrypt.compare(req.body.password  , user.password)
     if(!isPassword){
-        return res.status(400).json("username or password is uncrrocet")
+        return res.status(400).json("username or password is incorrect")
     }
     const token = jwt.sign(
         {id:user._id , username:user.username  , isStaff:user.isStaff , isAdmin:user.isAdmin} , process.env.JWT_SEC
     )
-    const {password , isAdmin  , isStaff , ...otherDetails}= user._doc 
+    const {password  , isStaff , ...otherDetails}= user._doc 
 
     res.cookie("access_token" , token , {httpOnly:true}).status(200).json({"userLogin":otherDetails , token})
 })

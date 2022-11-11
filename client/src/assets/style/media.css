@@ -1,0 +1,102 @@
+
+  @media (max-width: 900px) {
+    
+    .contianer{
+        width: 80%;
+        margin:  auto;
+        padding: 5%;
+
+    }
+  .content{
+    display: flex ;
+    flex-direction: column;
+    font-size: small;
+    
+  }
+  .headtitle{
+    font-size: 25px;
+  }
+  
+  .homeNews{
+    display: grid;
+    grid-template-columns: auto;
+    grid-gap: 4rem;
+  }
+
+  .hid{
+    display: none;
+  }
+  .foot{
+    display: grid;
+    grid-template-columns: auto;
+    justify-content: center;
+    align-items: center;
+  }
+  .landing{
+    display: flex;
+    flex-direction: column-reverse;
+    /* grid-template-columns: auto; */
+    justify-content: center;
+    align-items: center;
+  }
+
+  .details{
+    display: grid;
+    grid-template-columns: auto;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .authForm form{
+    width: 100%;
+  }
+  .comments{
+    display: flex;
+    flex-direction: column-reverse;
+    /* grid-template-columns: auto; */
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 400px;
+}
+  .comment{
+    width: 100%;
+    height: fit-content;
+  }
+
+.addComm form{
+    max-height: 100px;
+}
+
+.profileForm{
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+
+.profileForm form{
+  width: 100%;
+}
+.profileForm .vewi{
+  width: 100%;
+  margin: 10px auto;
+}
+.navBar .header nav .link{
+  font-size: 16px;
+}
+
+.logo{
+  height: 30px;
+  width: 30px;
+}
+
+.left{
+  font-size: 20px;
+  width: 100%;
+  overflow: hidden;
+}
+  }
+  /* @media (max-width: 500px) {
+    .content{
+        display: grid;
+      }
+  } */

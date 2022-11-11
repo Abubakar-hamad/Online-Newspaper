@@ -10,7 +10,6 @@ import { useNavigate } from 'react-router-dom';
 const Tech = ({news}) => {
   
   const navigate= useNavigate() 
-  
 
 
   return (
@@ -35,7 +34,7 @@ const Tech = ({news}) => {
         pagination={{ clickable: true }} >
               {news ? 
              
-              news.map(item =>(
+              news.filter(items => items.category === 'tech').map(item =>(
                <SwiperSlide key={item._id} style={{width:'300px'}}>
             
                 <div onClick={()=>navigate(`/news/${item._id}`)} className="swiperCards">
@@ -77,7 +76,7 @@ const Tech = ({news}) => {
 
             {news ? 
              
-             news.map(item =>(
+             news.filter(items=> items.category === 'mix').map(item =>(
               <SwiperSlide key={item._id} style={{width:'300px'}}>
            
                <div onClick={()=>navigate(`news/${item._id}`)} className="swiperCards">

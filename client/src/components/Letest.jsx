@@ -3,6 +3,9 @@ import { useNavigate } from 'react-router-dom'
 
 const Letest = ({mostR , nonScroll  , news}) => {
   const navigate = useNavigate()
+   
+
+
   return (
     <div className={nonScroll ? '' : 'split'}>
       <h2>{mostR}</h2>

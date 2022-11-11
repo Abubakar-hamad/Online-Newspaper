@@ -48,7 +48,9 @@ const Details = ({news}) => {
   return (
     <div>
         <div className="details container">
-            <MostRead  news={[...news].slice(0 , 4)} mostR={"الاخيرة"} nonScroll={'unScrolling'} />
+          <div className="hid">
+            <MostRead  news={[...news].reverse().slice(0 , 4)} mostR={"الاخيرة"} nonScroll={'unScrolling'} />
+          </div>
             {item ?
               <>
               <div className="contentDetaials">
@@ -76,7 +78,7 @@ const Details = ({news}) => {
              
           } 
 
-            <Letest news={[...news].slice(0 , 2)} mostR={"أخبار مرتبطة"} nonScroll={'unScrolling'}  />
+            <Letest news={[...news].slice(3 , 6)} mostR={"أخبار مختارة"} nonScroll={'unScrolling'}  />
         </div>
         
        <Comments  />

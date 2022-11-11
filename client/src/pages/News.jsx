@@ -4,7 +4,9 @@ import { useNavigate } from 'react-router-dom'
 import back from '../assets/img/back.png'
 import nxt from '../assets/img/next.png'
 import Filter from '../components/Filter'
-import useFetch from '../hooks/useFetch'
+import Spinner from '../components/Spinner/Spinner'
+
+
 const News = ({news , setNews}) => {
   const navigate= useNavigate()
   const [currentpage , setCurrentpage] = useState(0)
@@ -12,16 +14,9 @@ const News = ({news , setNews}) => {
   const [pageNumber , setPageNumber] = useState(1)
   const next = document.getElementById('next')
    
-  // const [filterdNews  , setFilterdNews] = useState('')
-  // const [dataFilterd , setDataFilterd] = useState('')
-  // const {data , loading , error} = useFetch(`news/filter?category=arabic/`)
-  // const {data , loading , error} = useFetch(`news/${dataFilterd}`)
-  
- 
- console.log(news);
   const goUp = ()=>{
     window.scrollTo({
-      top:100 ,
+      top:10 ,
       behavior:'smooth'
     })
   }
@@ -59,7 +54,7 @@ const News = ({news , setNews}) => {
         <div className="container landing ">
         <div className="mostRead">
                 
-        {news &&  
+        {news ?
         [...news].reverse().slice(currentpage  , pageLimit).map(item =>(
           <div data-aos="fade-up"   data-aos-duration="1000" onClick={()=>navigate(`/news/${item._id}`)}  key={item._id} className="item newsLanding">
               <div className="mReadContent">
@@ -81,6 +76,10 @@ const News = ({news , setNews}) => {
           </div>
 
         ))
+        :
+      
+        <Spinner/>
+        
         }
                 
             
